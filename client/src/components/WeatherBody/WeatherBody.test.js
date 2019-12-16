@@ -51,7 +51,7 @@ const data =
 it('Major city with data is ok.', function() {
     const dom = renderer.create(
         <Provider store={storage}>
-            <WeatherBody cityData={data} isMain/>
+            <WeatherBody cityData={data} isMajor/>
         </Provider>
     ).toJSON();
     expect(dom).toMatchSnapshot();
@@ -60,7 +60,7 @@ it('Major city with data is ok.', function() {
 it('Favour city with data is ok.', function() {
     const dom = renderer.create(
         <Provider store={storage}>
-            <WeatherBody cityData={data} isMain={false}/>
+            <WeatherBody cityData={data} isMajor={false}/>
         </Provider>
     ).toJSON();
     expect(dom).toMatchSnapshot();
@@ -69,7 +69,7 @@ it('Favour city with data is ok.', function() {
 it('Error on favour is ok.', function() {
     const dom = renderer.create(
         <Provider store={storage}>
-            <WeatherBody error={"There is no such city."} cityData={name="sadasdsad"} isMain={false}/>
+            <WeatherBody error={"There is no such city."} cityData={name="sadasdsad"} isMajor={false}/>
         </Provider>
     ).toJSON();
     expect(dom).toMatchSnapshot();
@@ -78,7 +78,7 @@ it('Error on favour is ok.', function() {
 it('Error on major city is ok.', function() {
     const dom = renderer.create(
         <Provider store={storage}>
-            <WeatherBody error={"There is no such city."} cityData={name="sadasdsad"} isMain/>
+            <WeatherBody error={"There is no such city."} cityData={name="sadasdsad"} isMajor/>
         </Provider>
     ).toJSON();
     expect(dom).toMatchSnapshot();
@@ -88,7 +88,7 @@ it('Error on major city is ok.', function() {
 it('Major loader is ok.', function() {
     const dom = renderer.create(
         <Provider store={storage}>
-            <WeatherBody isLoading cityData={name="sadasdsad"} isMain/>
+            <WeatherBody isLoading cityData={name="sadasdsad"} isMajor/>
         </Provider>
     ).toJSON();
     expect(dom).toMatchSnapshot();
@@ -98,7 +98,7 @@ it('Major loader is ok.', function() {
 it('Favour loader is ok.', function() {
     const dom = renderer.create(
         <Provider store={storage}>
-            <WeatherBody isLoading cityData={name="sadasdsad"} isMain={false}/>
+            <WeatherBody isLoading cityData={name="sadasdsad"} isMajor={false}/>
         </Provider>
     ).toJSON();
     expect(dom).toMatchSnapshot();
@@ -107,7 +107,7 @@ it('Favour loader is ok.', function() {
 it('Major loader without data is ok.', function() {
     const dom = renderer.create(
         <Provider store={storage}>
-            <WeatherBody cityName={"sadasdsad"} isMain/>
+            <WeatherBody cityName={"sadasdsad"} isMajor/>
         </Provider>
     ).toJSON();
     expect(dom).toMatchSnapshot();
@@ -117,7 +117,7 @@ it('Major loader without data is ok.', function() {
 it('Favour city without data is ok.', function() {
     const dom = renderer.create(
         <Provider store={storage}>
-            <WeatherBody cityName={"sadasdsad"} isMain={false}/>
+            <WeatherBody cityName={"sadasdsad"} isMajor={false}/>
         </Provider>
     ).toJSON();
     expect(dom).toMatchSnapshot();

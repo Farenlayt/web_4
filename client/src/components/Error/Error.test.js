@@ -7,7 +7,7 @@ import React from "react";
 it('Error message is ok.', function() {
     const dom = renderer.create(
         <Provider store={storage}>
-            <Error error={"Ошибочка вышла"} isMain={false} />
+            <Error error={"Ошибочка вышла"} isMajor={false} />
         </Provider>
     ).toJSON();
     expect(dom).toMatchSnapshot();
@@ -16,7 +16,7 @@ it('Error message is ok.', function() {
 it('Error message in major is ok.', function() {
     const dom = renderer.create(
         <Provider store={storage}>
-            <Error error={"Ошибочка вышла"} isMain/>
+            <Error error={"Ошибочка вышла"} isMajor/>
         </Provider>
     ).toJSON();
     expect(dom).toMatchSnapshot();
