@@ -1,7 +1,10 @@
 import favourCityReducer from "../reducers/favourCityReducer";
 
-const endpoint = "https://cors-anywhere.herokuapp.com/https://api.openweathermap.org/data/2.5/weather";
-let appId = "e9931f3a56608b6f3be9e93c5d8d26b4";
+// const endpoint = "https://cors-anywhere.herokuapp.com/https://api.openweathermap.org/data/2.5/weather";
+// let appId = "e9931f3a56608b6f3be9e93c5d8d26b4";
+
+const weatherLink = "http://localhost:8081/weather";
+const favourLink = "http://localhost:8081/favorites";
 
 async function getData(dispatch, cityName) {
     const address = `${endpoint}?q=${cityName}&appid=${appId}`;
