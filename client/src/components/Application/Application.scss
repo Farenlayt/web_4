@@ -1,0 +1,33 @@
+
+.Application {
+  margin-top: 20px;
+  margin-left: auto;
+  margin-right: auto;
+  width: 1050px;
+}
+
+.btn {
+  display: inline-block;
+  font-weight: 400;
+  text-align: center;
+  white-space: nowrap;
+  vertical-align: middle;
+  padding: .375rem .75rem;
+  font-size: 1rem;
+  line-height: 1.5;
+  border: 0;
+  border-radius: .25rem;
+  color: #758489;
+  background-color: #c9d2d7;
+}
+
+.add-data-element {
+  margin: 0;
+  color: #fff;
+  background-color: #a7afb1;
+  font-size: 24px;
+  padding: auto;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}

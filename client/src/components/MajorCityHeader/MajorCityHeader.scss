@@ -1,0 +1,9 @@
+.major-header{
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  margin: 10px;
+  font-size: 40px;
+  color: #6f8288;
+  justify-content: center;
+  align-items: center;
+}
