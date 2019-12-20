@@ -1,24 +1,61 @@
 import favourCityReducer from "../reducers/favourCityReducer";
 
-// const endpoint = "https://cors-anywhere.herokuapp.com/https://api.openweathermap.org/data/2.5/weather";
-// let appId = "e9931f3a56608b6f3be9e93c5d8d26b4";
-
 const weatherLink = "http://localhost:8081/weather";
 const favourLink = "http://localhost:8081/favorites";
 
 async function getData(dispatch, cityName) {
-    const address = `${endpoint}?q=${cityName}&appid=${appId}`;
-    const fetchResult = await fetch(address);
+    const reqLink = `${weatherLink}?city=${cityName}`;
+    const fetchResult = await fetch(reqLink);
     if (fetchResult.ok) {
         const json = await fetchResult.json();
+            await fetch(favourLink, {
+                    method: "POST",
+                    mode: "cors",
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify({name: json.name})
+                }
+            );
         return dispatch(favourCityReducer.actions.receiveFavourSuccess(json));
     } else {
         return dispatch(favourCityReducer.actions.receiveFavourFailure(cityName));
     }
 }
-export const requestfavourCityData = function(cityName) {
+
+const removeCity = function (cityName) {
+    return async function(dispatch) {
+        await fetch(favourLink, {
+                method: "DELETE",
+                mode: "cors",
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({name: cityName})
+            }
+        );
+        dispatch(favourCityReducer.actions.removefavourCity(cityName));
+    }
+};
+
+const updateCities = function() {
+    return async function(dispatch) {
+        fetch(favourLink)
+            .then(function (data) {return data.json()})
+            .then(function(cities) {
+                if (cities) {
+                    for (const cityName of cities) {
+                        dispatch(requestfavourCityData(cityName));
+                    }
+                }
+            });
+    };
+};
+
+const requestfavourCityData = function(cityName) {
     return async function(dispatch) {
         dispatch(favourCityReducer.actions.requestFavourData(cityName));
         await getData(dispatch, cityName);
     };
 };
+export {requestfavourCityData, removeCity, updateCities};

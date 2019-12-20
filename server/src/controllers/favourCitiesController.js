@@ -1,5 +1,5 @@
-const {sendError} = request('../auxiliary/auxiliary.js');
-const Cities = require('../models/Cities.js');
+import {sendError} from '../auxiliary/auxiliary.js';
+import Cities from '../models/Cities.js';
 
 const updateFavourList = async function(request, response) {
     try {

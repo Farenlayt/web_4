@@ -12,10 +12,11 @@
   "license": "ISC",
   "dependencies": {
     "cors": "latest",
-    "express": "latest",
+    "express": "^4.17.1",
     "mongoose": "latest",
     "morgan": "latest",
+    "node-fetch": "latest",
     "nodemon": "latest",
-    "node-fetch": "latest"
+    "request": "^2.88.0"
   }
 }

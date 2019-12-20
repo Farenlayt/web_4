@@ -1,4 +1,4 @@
-const {UrlByCoords, UrlByName, weatherRequest, sendError} = require("../auxiliary/auxiliary.js");
+import {UrlByCoords, UrlByName, weatherRequest, sendError} from "../auxiliary/auxiliary.js";
 
 const weatherByCoords = async function (request, response) {
     if (!request.query){

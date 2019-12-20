@@ -1,9 +1,9 @@
-const express = require('express');
-const cors = require('cors');
-const morgan = require('morgan');
-const mongoose = require('mongoose');
-const weatherRouter = require('./routers/weatherRouter.js');
-const favourRouter = require('./routers/favoutRouter.js');
+import express from 'express';
+import cors from 'cors';
+import morgan from 'morgan';
+import mongoose from 'mongoose';
+import weatherRouter from './routers/weatherRouter.js';
+import favourRouter from './routers/favourRouter.js';
 
 async function run() {
     const app = express();
