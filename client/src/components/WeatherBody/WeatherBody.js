@@ -11,7 +11,7 @@ function mapDispatchToProps(dispatch) {
     return {
         removeCity: function(cityName) {dispatch(favourCityReducer.actions.removefavourCity(cityName))},
         updateCity:  function() {dispatch(majorCityReducer.actions.requestMajorData())},
-        addCity: function(cityName) {dispatch(requestfavourCityData(cityName))}
+        addCity: function(cityName, used) {dispatch(requestfavourCityData({cityName: cityName, isBody:true}))}
     };
 }
 
@@ -32,7 +32,7 @@ class WeatherBody extends Component {
             this.props.updateCity();
         }
         else {
-            this.props.addCity(this.props.cityName || this.props.cityData.name);
+            this.props.addCity(this.props.cityName || this.props.cityData.name, this.props.used);
         }
     }
 
@@ -49,12 +49,12 @@ class WeatherBody extends Component {
         }
         if (isUpdating || !cityData) {
             return (
-                <Loader isMajor={isMajor} key={this.props.name}/>
+                <Loader isMajor={isMajor} key={this.props.cityName}/>
             )
         }
         if (isLoading) {
             return (
-                <div key={this.props.name}>
+                <div key={this.props.cityName}>
 
                 </div>
             )

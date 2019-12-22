@@ -5,7 +5,7 @@ import "./FavourCitiesHeader.scss"
 
 function mapDispatchToProps(dispatch) {
     return {
-        addCity: function(cityName){return dispatch(requestfavourCityData(cityName))}
+        addCity: function(cityName){return dispatch(requestfavourCityData({cityName: cityName, isBody: false}))}
     };
 }
 

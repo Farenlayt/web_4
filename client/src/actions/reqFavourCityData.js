@@ -45,15 +45,22 @@ const updateCities = function() {
             .then(function(cities) {
                 if (cities) {
                     for (const cityName of cities) {
-                        dispatch(requestfavourCityData(cityName));
+                        dispatch(requestfavourCityData({cityName: cityName, notUsed: true}));
                     }
                 }
             });
     };
 };
 
-const requestfavourCityData = function(cityName) {
+const requestfavourCityData = function(payload) {
     return async function(dispatch) {
+        console.log(payload);
+        const isBody = payload.isBody;
+        const notUsed = payload.notUsed;
+        if (!notUsed && isBody){
+            return;
+        };
+        const cityName = payload.cityName;
         dispatch(favourCityReducer.actions.requestFavourData(cityName));
         await getData(dispatch, cityName);
     };

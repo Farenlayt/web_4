@@ -11,6 +11,7 @@ function mapStateToProps(state) {
 
 class FavourCitiesWrapper extends Component {
     render() {
+        const used = this.props.used;
         return (
             <div>
                 <FavourCitiesHeader/>
@@ -23,7 +24,8 @@ class FavourCitiesWrapper extends Component {
                                               isMajor={false}
                                               cityData={city.cityData}
                                               isLoading={city.isLoading}
-                                              key={city.cityData.name}/>
+                                              key={city.cityData.name}
+                                              used={used}/>
                             )
                         }
                     )
