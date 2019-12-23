@@ -6,10 +6,11 @@ const updateFavourList = async function(request, response) {
         const cityName = request.body.name;
         const exists = await Cities.find({name: {$regex: `${cityName}`, $options: "i"}});
         if (exists.length === 0) {
-            const result = await (new Cities({name: cityName}).save());
-            if (!result.ok) {
-                const error = "При сохранении города вышла ошибочка :(";
-                sendError(error, response);
+            try {
+                await (new Cities({name: cityName}).save());
+            }
+            catch (exception) {
+                sendError(exception, response);
                 return;
             }
         }

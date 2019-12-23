@@ -7,7 +7,7 @@ const favourCityReducer = createSlice({
         },
         reducers: {
             requestFavourData: function(state, action) {
-                const cityName = action.payload.cityName;
+                const cityName = action.payload;
                 const stateWithout = state.cities.filter(function(city) {return city.cityData.name.toUpperCase() !== cityName.toUpperCase();}).length;
                 if (state.cities.length !== stateWithout)
                 return Object.assign({}, state);
@@ -19,14 +19,12 @@ const favourCityReducer = createSlice({
                 });
             },
             receiveFavourSuccess: function(state, action) {
-                console.log(action);
-                console.log(action.payload);
                 return {cities: updateObjectInArray(state.cities, action.payload, false)};
             },
             receiveFavourFailure: function(state, action) {
                 return Object.assign({}, state, {cities: updateObjectInArray(state.cities, {name: action.payload}, true)});
             },
-            removefavourCity: function(state, action) {
+            removeFavourCity: function(state, action) {
                 return Object.assign({}, state, {cities: state.cities.filter(function(c) {return !compareCityNameStrings(c.cityData.name, action.payload);})});
             }
         }

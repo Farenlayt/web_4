@@ -3,13 +3,23 @@ import {connect} from "react-redux";
 import FavourCitiesHeader from "../FavourCitiesHeader/FavourCitiesHeader";
 import WeatherBody from "../WeatherBody/WeatherBody";
 import "./FavourCitiesWrapper.scss"
+import {requestFavourCityData, updateCities} from "../../actions/reqFavourCityData";
 
 function mapStateToProps(state) {
     const {cities} = state.favourCityReducer;
     return {cities};
 }
 
+function mapDispatchToProps(dispatch) {
+    return {
+        updateCities: function(){return dispatch(updateCities())}
+    };
+}
+
 class FavourCitiesWrapper extends Component {
+    componentDidMount() {
+        this.props.updateCities();
+    }
     render() {
         const used = this.props.used;
         return (
@@ -36,4 +46,4 @@ class FavourCitiesWrapper extends Component {
     }
 }
 
-export default connect(mapStateToProps)(FavourCitiesWrapper);
+export default connect(mapStateToProps, mapDispatchToProps)(FavourCitiesWrapper);

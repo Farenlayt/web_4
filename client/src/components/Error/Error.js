@@ -4,7 +4,7 @@ import {connect} from "react-redux";
 
 function mapDispatchToProps(dispatch) {
     return {
-        removeCity: function(cityName) {dispatch(favourCityReducer.actions.removefavourCity(cityName))}
+        removeCity: function(cityName) {dispatch(favourCityReducer.actions.removeFavourCity(cityName))}
     };
 }
 
