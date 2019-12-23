@@ -1,4 +1,5 @@
-import mongoose from 'mongoose';
+const mongoose = require('mongoose');
+
 const Schema = mongoose.Schema;
 
 const CitiesSchema = new Schema({
@@ -6,4 +7,4 @@ const CitiesSchema = new Schema({
 });
 
 const Cities = mongoose.model("Cities", CitiesSchema);
-export default Cities;
+module.exports = Cities;

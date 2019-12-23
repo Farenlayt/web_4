@@ -1,5 +1,5 @@
-import {sendError} from '../auxiliary/auxiliary.js';
-import Cities from '../models/Cities.js';
+const {sendError} = require( '../auxiliary/auxiliary.js');
+const Cities = require( '../models/Cities.js');
 
 const updateFavourList = async function(request, response) {
     try {
@@ -43,4 +43,4 @@ const getFavourList = async function(request, response) {
     }
 };
 
-export default {updateFavourList, removeFromFavour, getFavourList};
+module.exports =  {updateFavourList, removeFromFavour, getFavourList};

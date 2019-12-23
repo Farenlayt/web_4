@@ -1,4 +1,4 @@
-import {UrlByCoords, UrlByName, weatherRequest, sendError} from "../auxiliary/auxiliary.js";
+const {UrlByCoords, UrlByName, weatherRequest, sendError} = require("../auxiliary/auxiliary.js");
 
 const weatherByCoords = async function (request, response) {
     if (!request.query){
@@ -31,4 +31,4 @@ const weatherByName = async function (request, response) {
     await weatherRequest(url, response);
 };
 
-export default {weatherByCoords, weatherByName}
+module.exports =  {weatherByCoords, weatherByName}
